@@ -1,0 +1,41 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: IndexFactoryARBEI
+    network: arbitrum-one
+    source:
+      address: "0x0Ea235d241ac4953DF78D81125f524B1F61dcF7B"
+      abi: IndexFactoryARBEI
+      startBlock: 300634384
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Initialized
+        - Issuanced
+        - OwnershipTransferred
+        - Paused
+        - Redemption
+        - Unpaused
+      abis:
+        - name: IndexFactoryARBEI
+          file: ./abis/IndexFactoryARBEI.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Issuanced(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleIssuanced
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Redemption(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleRedemption
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-factory-arbei.ts
