@@ -1,13 +1,314 @@
-type Initialized @entity(immutable: true) {
+type ARBEIInitialized @entity(immutable: true) {
   id: Bytes!
+  network: String! # string
   version: Int! # uint8
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
 
-type Issuanced @entity(immutable: true) {
+type ARBEIIssuanced @entity(immutable: true) {
   id: Bytes!
+  network: String! # string
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! #uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIPaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIRedemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! #uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIUnpaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type ARBEIApproval @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIFeeRateSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeRatePerDayScaled: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIFeeReceiverSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIMethodologistSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodologist: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIMethodologySet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodology: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIMintFeeToReceiver @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  timestamp: BigInt! # uint256
+  totalSupply: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIMinterSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEISupplyCeilingSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  supplyCeiling: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIToggledRestricted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  isRestricted: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEITransfer @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIApproval @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIFeeRateSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeRatePerDayScaled: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIFeeReceiverSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIInitialized @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMethodologistSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodologist: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMethodologySet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodology: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMintFeeToReceiver @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  timestamp: BigInt! # uint256
+  totalSupply: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMinterRemoved @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMinterSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIPaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFISupplyCeilingSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  supplyCeiling: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIToggledRestricted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  isRestricted: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFITransfer @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIUnpaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIRequestIssuance @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
   user: Bytes! # address
   inputToken: Bytes! # address
   inputAmount: BigInt! # uint256
@@ -18,25 +319,11 @@ type Issuanced @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type OwnershipTransferred @entity(immutable: true) {
+type ANFIRequestRedemption @entity(immutable: true) {
   id: Bytes!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type Paused @entity(immutable: true) {
-  id: Bytes!
-  account: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type Redemption @entity(immutable: true) {
-  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
   user: Bytes! # address
   outputToken: Bytes! # address
   inputAmount: BigInt! # uint256
@@ -47,9 +334,42 @@ type Redemption @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type Unpaused @entity(immutable: true) {
+type ANFIIssuanced @entity(immutable: true) {
   id: Bytes!
-  account: Bytes! # address
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIMessageSent @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIRedemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

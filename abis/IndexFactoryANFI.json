@@ -18,11 +18,42 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "user",
+        "name": "previousOwner",
         "type": "address"
       },
       {
         "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "messageId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
         "internalType": "address",
         "name": "inputToken",
         "type": "address"
@@ -42,17 +73,11 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
         "name": "time",
         "type": "uint256"
       }
     ],
-    "name": "Issuanced",
+    "name": "RequestIssuance",
     "type": "event"
   },
   {
@@ -60,36 +85,16 @@
     "inputs": [
       {
         "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "messageId",
+        "type": "bytes32"
       },
       {
         "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "Paused",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
       {
         "indexed": true,
         "internalType": "address",
@@ -97,7 +102,7 @@
         "type": "address"
       },
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "outputToken",
         "type": "address"
@@ -117,31 +122,28 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
         "name": "time",
         "type": "uint256"
       }
     ],
-    "name": "Redemption",
+    "name": "RequestRedemption",
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
+    "inputs": [],
+    "name": "coreSender",
+    "outputs": [
+      { "internalType": "contract CoreSender", "name": "", "type": "address" }
     ],
-    "name": "Unpaused",
-    "type": "event"
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentChainSelector",
+    "outputs": [{ "internalType": "uint64", "name": "", "type": "uint64" }],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [],
@@ -157,12 +159,55 @@
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "functionsOracle",
+    "outputs": [
       {
-        "internalType": "address payable",
-        "name": "_factoryStorage",
+        "internalType": "contract FunctionsOracle",
+        "name": "",
         "type": "address"
       }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "indexToken",
+    "outputs": [
+      { "internalType": "contract IndexToken", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "_currentChainSelector",
+        "type": "uint64"
+      },
+      {
+        "internalType": "address payable",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_indexFactoryStorage",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_functionsOracle",
+        "type": "address"
+      },
+      {
+        "internalType": "address payable",
+        "name": "_coreSender",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "_weth", "type": "address" }
     ],
     "name": "initialize",
     "outputs": [],
@@ -171,11 +216,7 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_tokenIn",
-        "type": "address"
-      },
+      { "internalType": "address", "name": "_tokenIn", "type": "address" },
       {
         "internalType": "address[]",
         "name": "_tokenInPath",
@@ -186,11 +227,8 @@
         "name": "_tokenInFees",
         "type": "uint24[]"
       },
-      {
-        "internalType": "uint256",
-        "name": "_amountIn",
-        "type": "uint256"
-      }
+      { "internalType": "uint256", "name": "_inputAmount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_crossChainFee", "type": "uint256" }
     ],
     "name": "issuanceIndexTokens",
     "outputs": [],
@@ -199,11 +237,8 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_inputAmount",
-        "type": "uint256"
-      }
+      { "internalType": "uint256", "name": "_inputAmount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_crossChainFee", "type": "uint256" }
     ],
     "name": "issuanceIndexTokensWithEth",
     "outputs": [],
@@ -213,43 +248,13 @@
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "pause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "paused",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_proposedOwner",
-        "type": "address"
-      }
+      { "internalType": "address", "name": "_proposedOwner", "type": "address" }
     ],
     "name": "proposeOwner",
     "outputs": [],
@@ -259,28 +264,19 @@
   {
     "inputs": [],
     "name": "proposedOwner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "amountIn", "type": "uint256" },
       {
         "internalType": "uint256",
-        "name": "amountIn",
+        "name": "_crossChainFee",
         "type": "uint256"
       },
-      {
-        "internalType": "address",
-        "name": "_tokenOut",
-        "type": "address"
-      },
+      { "internalType": "address", "name": "_tokenOut", "type": "address" },
       {
         "internalType": "address[]",
         "name": "_tokenOutPath",
@@ -293,13 +289,7 @@
       }
     ],
     "name": "redemption",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -313,12 +303,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_factoryStorage",
+        "internalType": "address payable",
+        "name": "_coreSender",
         "type": "address"
       }
     ],
-    "name": "setFactoryStorage",
+    "name": "setCoreSender",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -327,9 +317,31 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "newOwner",
+        "name": "_functionsOracle",
         "type": "address"
       }
+    ],
+    "name": "setFunctionsOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_factoryStorage",
+        "type": "address"
+      }
+    ],
+    "name": "setIndexFactoryStorage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -338,13 +350,12 @@
   },
   {
     "inputs": [],
-    "name": "unpause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "weth",
+    "outputs": [
+      { "internalType": "contract IWETH", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
-  {
-    "stateMutability": "payable",
-    "type": "receive"
-  }
+  { "stateMutability": "payable", "type": "receive" }
 ]

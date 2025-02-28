@@ -2,26 +2,24 @@ import { dataSource } from "@graphprotocol/graph-ts"
 import {
   Initialized as InitializedEvent,
   Issuanced as IssuancedEvent,
+  MessageSent as MessageSentEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
-  Paused as PausedEvent,
   Redemption as RedemptionEvent,
-  Unpaused as UnpausedEvent
-} from "../generated/IndexFactoryARBEI/IndexFactoryARBEI"
+} from "../generated/IndexCoreSenderANFI/IndexCoreSenderANFI"
 import {
-  ARBEIInitialized,
-  ARBEIIssuanced,
-  ARBEIOwnershipTransferred,
-  ARBEIPaused,
-  ARBEIRedemption,
-  ARBEIUnpaused
+  ANFIInitialized,
+  ANFIIssuanced,
+  ANFIMessageSent,
+  ANFIOwnershipTransferred,
+  ANFIRedemption,
 } from "../generated/schema"
 
 export function handleInitialized(event: InitializedEvent): void {
-  let entity = new ARBEIInitialized(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let entity = new ANFIInitialized(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.network = dataSource.network()
   entity.version = event.params.version
+  entity.network = dataSource.network()
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -31,16 +29,32 @@ export function handleInitialized(event: InitializedEvent): void {
 }
 
 export function handleIssuanced(event: IssuancedEvent): void {
-  let entity = new ARBEIIssuanced(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let entity = new ANFIIssuanced(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.network = dataSource.network()
+  entity.messageId = event.params.messageId
+  entity.nonce = event.params.nonce
   entity.user = event.params.user
   entity.inputToken = event.params.inputToken
   entity.inputAmount = event.params.inputAmount
   entity.outputAmount = event.params.outputAmount
+  entity.price = event.params.price
   entity.time = event.params.time
-  entity.price= event.params.price
+  entity.network = dataSource.network()
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}
+
+export function handleMessageSent(event: MessageSentEvent): void {
+  let entity = new ANFIMessageSent(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
+  )
+  entity.messageId = event.params.messageId
+  entity.network = dataSource.network()
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -50,29 +64,14 @@ export function handleIssuanced(event: IssuancedEvent): void {
 }
 
 export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent
+  event: OwnershipTransferredEvent,
 ): void {
-  let entity = new ARBEIOwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let entity = new ANFIOwnershipTransferred(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-
-  entity.network = dataSource.network()
   entity.previousOwner = event.params.previousOwner
   entity.newOwner = event.params.newOwner
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handlePaused(event: PausedEvent): void {
-  let entity = new ARBEIPaused(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
   entity.network = dataSource.network()
-  entity.account = event.params.account
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -82,30 +81,18 @@ export function handlePaused(event: PausedEvent): void {
 }
 
 export function handleRedemption(event: RedemptionEvent): void {
-  let entity = new ARBEIRedemption(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let entity = new ANFIRedemption(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.network = dataSource.network()
+  entity.messageId = event.params.messageId
+  entity.nonce = event.params.nonce
   entity.user = event.params.user
   entity.outputToken = event.params.outputToken
   entity.inputAmount = event.params.inputAmount
   entity.outputAmount = event.params.outputAmount
+  entity.price = event.params.price
   entity.time = event.params.time
-  entity.price= event.params.price
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleUnpaused(event: UnpausedEvent): void {
-  let entity = new ARBEIUnpaused(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
   entity.network = dataSource.network()
-  entity.account = event.params.account
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

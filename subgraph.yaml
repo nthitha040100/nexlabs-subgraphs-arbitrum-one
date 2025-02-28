@@ -8,7 +8,7 @@ dataSources:
     name: IndexFactoryARBEI
     network: arbitrum-one
     source:
-      address: "0x0Ea235d241ac4953DF78D81125f524B1F61dcF7B"
+      address: "0xC261547547fb4b108db504FE200e20Db7612D5E9"
       abi: IndexFactoryARBEI
       startBlock: 300634384
     mapping:
@@ -16,26 +16,212 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Initialized
-        - Issuanced
-        - OwnershipTransferred
-        - Paused
-        - Redemption
-        - Unpaused
+        - ARBEIInitialized
+        - ARBEIIssuanced
+        - ARBEIOwnershipTransferred
+        - ARBEIPaused
+        - ARBEIRedemption
+        - ARBEIUnpaused
       abis:
         - name: IndexFactoryARBEI
           file: ./abis/IndexFactoryARBEI.json
       eventHandlers:
         - event: Initialized(uint8)
           handler: handleInitialized
-        - event: Issuanced(indexed address,indexed address,uint256,uint256,uint256)
+        - event: Issuanced(indexed address,indexed address,uint256,uint256,uint256,uint256)
           handler: handleIssuanced
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
         - event: Paused(address)
           handler: handlePaused
-        - event: Redemption(indexed address,indexed address,uint256,uint256,uint256)
+        - event: Redemption(indexed address,indexed address,uint256,uint256,uint256,uint256)
           handler: handleRedemption
         - event: Unpaused(address)
           handler: handleUnpaused
       file: ./src/index-factory-arbei.ts
+  - kind: ethereum
+    name: IndexTokenARBEI
+    network: arbitrum-one
+    source:
+      address: "0x4386741db5Aadec9201c997b9fD197b598ef1323"
+      abi: IndexTokenARBEI
+      startBlock: 300632315
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ARBEIApproval
+        - ARBEIFeeRateSet
+        - ARBEIFeeReceiverSet
+        - ARBEIInitialized
+        - ARBEIMethodologistSet
+        - ARBEIMethodologySet
+        - ARBEIMintFeeToReceiver
+        - ARBEIMinterSet
+        - ARBEIOwnershipTransferred
+        - ARBEIPaused
+        - ARBEISupplyCeilingSet
+        - ARBEIToggledRestricted
+        - ARBEITransfer
+        - ARBEIUnpaused
+      abis:
+        - name: IndexTokenARBEI
+          file: ./abis/IndexTokenARBEI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: FeeRateSet(indexed uint256)
+          handler: handleFeeRateSet
+        - event: FeeReceiverSet(indexed address)
+          handler: handleFeeReceiverSet
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MethodologistSet(indexed address)
+          handler: handleMethodologistSet
+        - event: MethodologySet(string)
+          handler: handleMethodologySet
+        - event: MintFeeToReceiver(address,uint256,uint256,uint256)
+          handler: handleMintFeeToReceiver
+        - event: MinterSet(indexed address)
+          handler: handleMinterSet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SupplyCeilingSet(uint256)
+          handler: handleSupplyCeilingSet
+        - event: ToggledRestricted(indexed address,bool)
+          handler: handleToggledRestricted
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-token-arbei.ts
+  - kind: ethereum
+    name: IndexTokenANFI
+    network: arbitrum-one
+    source:
+      address: "0x41Fecfb0E330E5FE13452B80049127991248345C"
+      abi: IndexTokenANFI
+      startBlock: 305653432
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ANFIApproval
+        - ANFIFeeRateSet
+        - ANFIFeeReceiverSet
+        - ANFIInitialized
+        - ANFIMethodologistSet
+        - ANFIMethodologySet
+        - ANFIMintFeeToReceiver
+        - ANFIMinterRemoved
+        - ANFIMinterSet
+        - ANFIOwnershipTransferred
+        - ANFIPaused
+        - ANFISupplyCeilingSet
+        - ANFIToggledRestricted
+        - ANFITransfer
+        - ANFIUnpaused
+      abis:
+        - name: IndexTokenANFI
+          file: ./abis/IndexTokenANFI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: FeeRateSet(indexed uint256)
+          handler: handleFeeRateSet
+        - event: FeeReceiverSet(indexed address)
+          handler: handleFeeReceiverSet
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MethodologistSet(indexed address)
+          handler: handleMethodologistSet
+        - event: MethodologySet(string)
+          handler: handleMethodologySet
+        - event: MintFeeToReceiver(address,uint256,uint256,uint256)
+          handler: handleMintFeeToReceiver
+        - event: MinterRemoved(indexed address)
+          handler: handleMinterRemoved
+        - event: MinterSet(indexed address)
+          handler: handleMinterSet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SupplyCeilingSet(uint256)
+          handler: handleSupplyCeilingSet
+        - event: ToggledRestricted(indexed address,bool)
+          handler: handleToggledRestricted
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-token-anfi.ts
+  - kind: ethereum
+    name: IndexFactoryANFI
+    network: arbitrum-one
+    source:
+      address: "0x6a41A7431556B5F14a3c0872175302B7A5B4D110"
+      abi: IndexFactoryANFI
+      startBlock: 305661345
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ANFIInitialized
+        - ANFIOwnershipTransferred
+        - ANFIRequestIssuance
+        - ANFIRequestRedemption
+      abis:
+        - name: IndexFactoryANFI
+          file: ./abis/IndexFactoryANFI.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RequestIssuance(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestIssuance
+        - event: RequestRedemption(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestRedemption
+      file: ./src/index-factory-anfi.ts
+  - kind: ethereum
+    name: IndexCoreSenderANFI
+    network: arbitrum-one
+    source:
+      address: "0xA33Ec66fDD910418b5C85DC5cB1b2A00b9D8701B"
+      abi: IndexCoreSenderANFI
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ANFIInitialized
+        - ANFIIssuanced
+        - ANFIMessageSent
+        - ANFIOwnershipTransferred
+        - ANFIRedemption
+      abis:
+        - name: IndexCoreSenderANFI
+          file: ./abis/IndexCoreSenderANFI.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Issuanced(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256,uint256)
+          handler: handleIssuanced
+        - event: MessageSent(bytes32)
+          handler: handleMessageSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Redemption(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256,uint256)
+          handler: handleRedemption
+      file: ./src/index-core-sender-anfi.ts

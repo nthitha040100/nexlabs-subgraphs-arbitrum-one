@@ -1,8 +1,21 @@
 {
   "arbitrum-one": {
     "IndexFactoryARBEI": {
-      "address": "0x0Ea235d241ac4953DF78D81125f524B1F61dcF7B",
+      "address": "0xC261547547fb4b108db504FE200e20Db7612D5E9",
       "startBlock": 300634384
+    },
+    "IndexTokenARBEI": {
+      "address": "0x4386741db5Aadec9201c997b9fD197b598ef1323",
+      "startBlock": 300632315
+    },
+    "IndexTokenANFI": {
+      "address": "0x41Fecfb0E330E5FE13452B80049127991248345C"
+    },
+    "IndexFactoryANFI": {
+      "address": "0x6a41A7431556B5F14a3c0872175302B7A5B4D110"
+    },
+    "IndexCoreSenderANFI": {
+      "address": "0xA33Ec66fDD910418b5C85DC5cB1b2A00b9D8701B"
     }
   }
 }
