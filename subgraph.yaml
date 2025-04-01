@@ -225,3 +225,130 @@ dataSources:
             address,address,uint256,uint256,uint256,uint256)
           handler: handleRedemption
       file: ./src/index-core-sender-anfi.ts
+  - kind: ethereum
+    name: IndexTokenCRYPTO5
+    network: arbitrum-one
+    source:
+      address: "0xdA184FC12cCe81dF499561E88f3d9a06cb229dfC"
+      abi: IndexTokenCRYPTO5
+      startBlock: 306953223
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CRYPTO5Approval
+        - CRYPTO5FeeRateSet
+        - CRYPTO5FeeReceiverSet
+        - CRYPTO5Initialized
+        - CRYPTO5MethodologistSet
+        - CRYPTO5MethodologySet
+        - CRYPTO5MintFeeToReceiver
+        - CRYPTO5MinterRemoved
+        - CRYPTO5MinterSet
+        - CRYPTO5OwnershipTransferred
+        - CRYPTO5Paused
+        - CRYPTO5SupplyCeilingSet
+        - CRYPTO5ToggledRestricted
+        - CRYPTO5Transfer
+        - CRYPTO5Unpaused
+      abis:
+        - name: IndexTokenCRYPTO5
+          file: ./abis/IndexTokenCRYPTO5.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: FeeRateSet(indexed uint256)
+          handler: handleFeeRateSet
+        - event: FeeReceiverSet(indexed address)
+          handler: handleFeeReceiverSet
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MethodologistSet(indexed address)
+          handler: handleMethodologistSet
+        - event: MethodologySet(string)
+          handler: handleMethodologySet
+        - event: MintFeeToReceiver(address,uint256,uint256,uint256)
+          handler: handleMintFeeToReceiver
+        - event: MinterRemoved(indexed address)
+          handler: handleMinterRemoved
+        - event: MinterSet(indexed address)
+          handler: handleMinterSet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SupplyCeilingSet(uint256)
+          handler: handleSupplyCeilingSet
+        - event: ToggledRestricted(indexed address,bool)
+          handler: handleToggledRestricted
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-token-crypto-5.ts
+  - kind: ethereum
+    name: IndexFactoryCRYPTO5
+    network: arbitrum-one
+    source:
+      address: "0xA00be13EbfaCa5ADB3780096F88dEA42d6a021c8"
+      abi: IndexFactoryCRYPTO5
+      startBlock: 306968115
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CRYPTO5Initialized
+        - CRYPTO5OwnershipTransferred
+        - CRYPTO5RequestIssuance
+        - CRYPTO5RequestRedemption
+      abis:
+        - name: IndexFactoryCRYPTO5
+          file: ./abis/IndexFactoryCRYPTO5.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RequestIssuance(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestIssuance
+        - event: RequestRedemption(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestRedemption
+      file: ./src/index-factory-crypto-5.ts
+  - kind: ethereum
+    name: IndexCoreSenderCRYPTO5
+    network: arbitrum-one
+    source:
+      address: "0xe7CDe099c0faFD2B9BbeB07FeD167737e8bDfd78"
+      abi: IndexCoreSenderCRYPTO5
+      startBlock: 307301601
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CRYPTO5Initialized
+        - CRYPTO5Issuanced
+        - CRYPTO5MessageSent
+        - CRYPTO5OwnershipTransferred
+        - CRYPTO5Redemption
+      abis:
+        - name: IndexCoreSenderCRYPTO5
+          file: ./abis/IndexCoreSenderCRYPTO5.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Issuanced(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256,uint256)
+          handler: handleIssuanced
+        - event: MessageSent(bytes32)
+          handler: handleMessageSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Redemption(indexed bytes32,indexed uint256,indexed
+            address,address,uint256,uint256,uint256,uint256)
+          handler: handleRedemption
+      file: ./src/index-core-sender-crypto-5.ts

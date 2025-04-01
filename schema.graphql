@@ -374,3 +374,217 @@ type ANFIRedemption @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type CRYPTO5Approval @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5FeeRateSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeRatePerDayScaled: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5FeeReceiverSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Initialized @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MethodologistSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodologist: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MethodologySet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodology: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MintFeeToReceiver @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  timestamp: BigInt! # uint256
+  totalSupply: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MinterRemoved @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MinterSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Paused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5SupplyCeilingSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  supplyCeiling: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5ToggledRestricted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  isRestricted: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Transfer @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Unpaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5RequestIssuance @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5RequestRedemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Issuanced @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5MessageSent @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5Redemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  messageId: Bytes! # bytes32
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

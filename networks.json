@@ -16,6 +16,15 @@
     },
     "IndexCoreSenderANFI": {
       "address": "0xA33Ec66fDD910418b5C85DC5cB1b2A00b9D8701B"
+    },
+    "IndexTokenCRYPTO5": {
+      "address": "0xdA184FC12cCe81dF499561E88f3d9a06cb229dfC"
+    },
+    "IndexFactoryCRYPTO5": {
+      "address": "0xA00be13EbfaCa5ADB3780096F88dEA42d6a021c8"
+    },
+    "IndexCoreSenderCRYPTO5": {
+      "address": "0xe7CDe099c0faFD2B9BbeB07FeD167737e8bDfd78"
     }
   }
 }
