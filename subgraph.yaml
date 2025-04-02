@@ -352,3 +352,252 @@ dataSources:
             address,address,uint256,uint256,uint256,uint256)
           handler: handleRedemption
       file: ./src/index-core-sender-crypto-5.ts
+  - kind: ethereum
+    name: IndexTokenMAG7
+    network: arbitrum-one
+    source:
+      address: "0xF04D96e9cFD651a55D439415598568512a49B72d"
+      abi: IndexTokenMAG7
+      startBlock: 311817431
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MAG7Approval
+        - MAG7FeeRateSet
+        - MAG7FeeReceiverSet
+        - MAG7Initialized
+        - MAG7MethodologistSet
+        - MAG7MethodologySet
+        - MAG7MintFeeToReceiver
+        - MAG7MinterSet
+        - MAG7OwnershipTransferred
+        - MAG7Paused
+        - MAG7SupplyCeilingSet
+        - MAG7ToggledRestricted
+        - MAG7Transfer
+        - MAG7Unpaused
+      abis:
+        - name: IndexTokenMAG7
+          file: ./abis/IndexTokenMAG7.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: FeeRateSet(indexed uint256)
+          handler: handleFeeRateSet
+        - event: FeeReceiverSet(indexed address)
+          handler: handleFeeReceiverSet
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: MethodologistSet(indexed address)
+          handler: handleMethodologistSet
+        - event: MethodologySet(string)
+          handler: handleMethodologySet
+        - event: MintFeeToReceiver(address,uint256,uint256,uint256)
+          handler: handleMintFeeToReceiver
+        - event: MinterSet(indexed address)
+          handler: handleMinterSet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SupplyCeilingSet(uint256)
+          handler: handleSupplyCeilingSet
+        - event: ToggledRestricted(indexed address,bool)
+          handler: handleToggledRestricted
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-token-mag-7.ts
+  - kind: ethereum
+    name: IndexFactoryMAG7
+    network: arbitrum-one
+    source:
+      address: "0xa481B9357C150A206b74c815fF6bCEc3D0786Ce9"
+      abi: IndexFactoryMAG7
+      startBlock: 311814348
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MAG7Initialized
+        - MAG7OwnershipTransferred
+        - MAG7Paused
+        - MAG7RequestCancelIssuance
+        - MAG7RequestCancelRedemption
+        - MAG7RequestIssuance
+        - MAG7RequestRedemption
+        - MAG7Unpaused
+      abis:
+        - name: IndexFactoryMAG7
+          file: ./abis/IndexFactoryMAG7.json
+      eventHandlers:
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RequestCancelIssuance(indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestCancelIssuance
+        - event: RequestCancelRedemption(indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRequestCancelRedemption
+        - event: RequestIssuance(indexed uint256,indexed address,address,uint256,uint256,uint256)
+          handler: handleRequestIssuance
+        - event: RequestRedemption(indexed uint256,indexed address,address,uint256,uint256,uint256)
+          handler: handleRequestRedemption
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-factory-mag-7.ts
+  - kind: ethereum
+    name: IndexProcessorMAG7
+    network: arbitrum-one
+    source:
+      address: "0x24D193bA32E51d5a88b63fa0a754d365EAbf8051"
+      abi: IndexProcessorMAG7
+      startBlock: 311814320
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MAG7Initialized
+        - MAG7IssuanceCancelled
+        - MAG7Issuanced
+        - MAG7OwnershipTransferred
+        - MAG7Paused
+        - MAG7Redemption
+        - MAG7RedemptionCancelled
+        - MAG7Unpaused
+      abis:
+        - name: IndexProcessorMAG7
+          file: ./abis/IndexProcessorMAG7.json
+      eventHandlers:
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: IssuanceCancelled(indexed uint256,indexed address,address,uint256,uint256,uint256)
+          handler: handleIssuanceCancelled
+        - event: Issuanced(indexed uint256,indexed address,address,uint256,uint256,uint256,uint256)
+          handler: handleIssuanced
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Redemption(indexed uint256,indexed address,address,uint256,uint256,uint256,uint256)
+          handler: handleRedemption
+        - event: RedemptionCancelled(indexed uint256,indexed
+            address,address,uint256,uint256,uint256)
+          handler: handleRedemptionCancelled
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-processor-mag-7.ts
+  - kind: ethereum
+    name: IndexBalancerARBEI
+    network: arbitrum-one
+    source:
+      address: "0xb4bdDC1DC62128e28ed66Fcd5e606B9a05712F2E"
+      abi: IndexBalancerARBEI
+      startBlock: 302257697
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ARBEIInitialized
+        - ARBEIOwnershipTransferred
+        - ARBEIPaused
+        - ARBEIRebalanced
+        - ARBEIUnpaused
+      abis:
+        - name: IndexBalancerARBEI
+          file: ./abis/IndexBalancerARBEI.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Rebalanced(indexed uint256)
+          handler: handleRebalanced
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-balancer-arbei.ts
+  - kind: ethereum
+    name: IndexBalancerMAG7
+    network: arbitrum-one
+    source:
+      address: "0xFD05fd8aC336006ddb6201Bf3798A0fC10D15088"
+      abi: IndexBalancerMAG7
+      startBlock: 311814334
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MAG7CompleteRebalanceActions
+        - MAG7FirstRebalanceAction
+        - MAG7Initialized
+        - MAG7OwnershipTransferred
+        - MAG7Paused
+        - MAG7SecondRebalanceAction
+        - MAG7Unpaused
+      abis:
+        - name: IndexBalancerMAG7
+          file: ./abis/IndexBalancerMAG7.json
+      eventHandlers:
+        - event: CompleteRebalanceActions(uint256,uint256)
+          handler: handleCompleteRebalanceActions
+        - event: FirstRebalanceAction(uint256,uint256)
+          handler: handleFirstRebalanceAction
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SecondRebalanceAction(uint256,uint256)
+          handler: handleSecondRebalanceAction
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/index-balancer-mag-7.ts
+  - kind: ethereum
+    name: IndexBalancerSenderCRYPTO5
+    network: arbitrum-one
+    source:
+      address: "0xaC00d47A66A7e37D7A2809CAba48CaC5ba95A30F"
+      abi: IndexBalancerSenderCRYPTO5
+      startBlock: 307653836
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CRYPTO5AskValuesCompleted
+        - CRYPTO5FirstReweightActionCompleted
+        - CRYPTO5Initialized
+        - CRYPTO5MessageSent
+        - CRYPTO5OwnershipTransferred
+        - CRYPTO5SecondReweightActionCompleted
+      abis:
+        - name: IndexBalancerSenderCRYPTO5
+          file: ./abis/IndexBalancerSenderCRYPTO5.json
+      eventHandlers:
+        - event: AskValuesCompleted(uint256)
+          handler: handleAskValuesCompleted
+        - event: FirstReweightActionCompleted(uint256)
+          handler: handleFirstReweightActionCompleted
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MessageSent(bytes32)
+          handler: handleMessageSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SecondReweightActionCompleted(uint256)
+          handler: handleSecondReweightActionCompleted
+      file: ./src/index-balancer-sender-crypto-5.ts

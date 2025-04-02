@@ -25,6 +25,24 @@
     },
     "IndexCoreSenderCRYPTO5": {
       "address": "0xe7CDe099c0faFD2B9BbeB07FeD167737e8bDfd78"
+    },
+    "IndexTokenMAG7": {
+      "address": "0xF04D96e9cFD651a55D439415598568512a49B72d"
+    },
+    "IndexFactoryMAG7": {
+      "address": "0xa481B9357C150A206b74c815fF6bCEc3D0786Ce9"
+    },
+    "IndexProcessorMAG7": {
+      "address": "0x24D193bA32E51d5a88b63fa0a754d365EAbf8051"
+    },
+    "IndexBalancerARBEI": {
+      "address": "0xb4bdDC1DC62128e28ed66Fcd5e606B9a05712F2E"
+    },
+    "IndexBalancerMAG7": {
+      "address": "0xFD05fd8aC336006ddb6201Bf3798A0fC10D15088"
+    },
+    "IndexBalancerSenderCRYPTO5": {
+      "address": "0xaC00d47A66A7e37D7A2809CAba48CaC5ba95A30F"
     }
   }
 }

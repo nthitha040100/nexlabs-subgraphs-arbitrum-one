@@ -588,3 +588,317 @@ type CRYPTO5Redemption @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type MAG7Approval @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7FeeRateSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeRatePerDayScaled: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7FeeReceiverSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7MethodologistSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodologist: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7MethodologySet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  methodology: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7MintFeeToReceiver @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  feeReceiver: Bytes! # address
+  timestamp: BigInt! # uint256
+  totalSupply: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7MinterSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  minter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7Paused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7SupplyCeilingSet @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  supplyCeiling: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7ToggledRestricted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  isRestricted: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7Transfer @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7Unpaused @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type MAG7Initialized @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  version: BigInt! # uint64
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7RequestCancelIssuance @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7RequestCancelRedemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7RequestIssuance @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7RequestRedemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7IssuanceCancelled @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7Issuanced @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  inputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7Redemption @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  price: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7RedemptionCancelled @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  user: Bytes! # address
+  outputToken: Bytes! # address
+  inputAmount: BigInt! # uint256
+  outputAmount: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ARBEIRebalanced @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7CompleteRebalanceActions @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7FirstRebalanceAction @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MAG7SecondRebalanceAction @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  nonce: BigInt! # uint256
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5AskValuesCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5FirstReweightActionCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CRYPTO5SecondReweightActionCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
