@@ -601,3 +601,38 @@ dataSources:
         - event: SecondReweightActionCompleted(uint256)
           handler: handleSecondReweightActionCompleted
       file: ./src/index-balancer-sender-crypto-5.ts
+  - kind: ethereum
+    name: IndexBalancerSenderANFI
+    network: arbitrum-one
+    source:
+      address: "0xcC7fA3Fc08f3b735f618744776C65A149E09a943"
+      abi: IndexBalancerSenderANFI
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ANFIAskValuesCompleted
+        - ANFIFirstReweightActionCompleted
+        - ANFIInitialized
+        - ANFIMessageSent
+        - ANFIOwnershipTransferred
+        - ANFISecondReweightActionCompleted
+      abis:
+        - name: IndexBalancerSenderANFI
+          file: ./abis/IndexBalancerSenderANFI.json
+      eventHandlers:
+        - event: AskValuesCompleted(uint256)
+          handler: handleAskValuesCompleted
+        - event: FirstReweightActionCompleted(uint256)
+          handler: handleFirstReweightActionCompleted
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MessageSent(bytes32)
+          handler: handleMessageSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SecondReweightActionCompleted(uint256)
+          handler: handleSecondReweightActionCompleted
+      file: ./src/index-balancer-sender-anfi.ts

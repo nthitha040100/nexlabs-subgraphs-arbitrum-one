@@ -43,6 +43,9 @@
     },
     "IndexBalancerSenderCRYPTO5": {
       "address": "0xaC00d47A66A7e37D7A2809CAba48CaC5ba95A30F"
+    },
+    "IndexBalancerSenderANFI": {
+      "address": "0xcC7fA3Fc08f3b735f618744776C65A149E09a943"
     }
   }
 }

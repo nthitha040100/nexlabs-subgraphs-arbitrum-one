@@ -902,3 +902,29 @@ type CRYPTO5SecondReweightActionCompleted @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type ANFIAskValuesCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFIFirstReweightActionCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ANFISecondReweightActionCompleted @entity(immutable: true) {
+  id: Bytes!
+  network: String! # string
+  time: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
