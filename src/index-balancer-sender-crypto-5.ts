@@ -2,17 +2,13 @@ import { dataSource } from "@graphprotocol/graph-ts"
 import {
   AskValuesCompleted as AskValuesCompletedEvent,
   FirstReweightActionCompleted as FirstReweightActionCompletedEvent,
-  Initialized as InitializedEvent,
   MessageSent as MessageSentEvent,
-  OwnershipTransferred as OwnershipTransferredEvent,
   SecondReweightActionCompleted as SecondReweightActionCompletedEvent,
 } from "../generated/IndexBalancerSenderCRYPTO5/IndexBalancerSenderCRYPTO5"
 import {
   CRYPTO5AskValuesCompleted,
   CRYPTO5FirstReweightActionCompleted,
-  CRYPTO5Initialized,
   CRYPTO5MessageSent,
-  CRYPTO5OwnershipTransferred,
   CRYPTO5SecondReweightActionCompleted,
 } from "../generated/schema"
 
@@ -46,42 +42,11 @@ export function handleFirstReweightActionCompleted(
   entity.save()
 }
 
-export function handleInitialized(event: InitializedEvent): void {
-  let entity = new CRYPTO5Initialized(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.version = event.params.version
-  entity.network = dataSource.network()
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
 export function handleMessageSent(event: MessageSentEvent): void {
   let entity = new CRYPTO5MessageSent(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.messageId = event.params.messageId
-  entity.network = dataSource.network()
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent,
-): void {
-  let entity = new CRYPTO5OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
   entity.network = dataSource.network()
 
   entity.blockNumber = event.block.number
