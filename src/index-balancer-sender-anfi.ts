@@ -1,4 +1,3 @@
-import { dataSource } from "@graphprotocol/graph-ts"
 import {
   AskValuesCompleted as AskValuesCompletedEvent,
   FirstReweightActionCompleted as FirstReweightActionCompletedEvent,
@@ -6,68 +5,71 @@ import {
   SecondReweightActionCompleted as SecondReweightActionCompletedEvent,
 } from "../generated/IndexBalancerSenderANFI/IndexBalancerSenderANFI"
 import {
-  ANFIAskValuesCompleted,
-  ANFIFirstReweightActionCompleted,
+  ANFIReweightAction,
   ANFIMessageSent,
-  ANFISecondReweightActionCompleted,
 } from "../generated/schema"
+import { ReweightActionType } from "./helper/enums"
+import { CHAIN } from "./helper/constant"
 
-export function handleAskValuesCompleted(event: AskValuesCompletedEvent): void {
-  let entity = new ANFIAskValuesCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+export function handleAskValuesCompleted(
+  event: AskValuesCompletedEvent
+): void {
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new ANFIReweightAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = ReweightActionType.ASK_VALUES_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
 
-  entity.save()
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleFirstReweightActionCompleted(
-  event: FirstReweightActionCompletedEvent,
+  event: FirstReweightActionCompletedEvent
 ): void {
-  let entity = new ANFIFirstReweightActionCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new ANFIReweightAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = ReweightActionType.FIRST_REWEIGHT_ACTION_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
 
-  entity.save()
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
+}
+
+export function handleSecondReweightActionCompleted(
+  event: SecondReweightActionCompletedEvent
+): void {
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new ANFIReweightAction(id)
+
+  action.type = ReweightActionType.SECOND_REWEIGHT_ACTION_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
+
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleMessageSent(event: MessageSentEvent): void {
   let entity = new ANFIMessageSent(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.messageId = event.params.messageId
-  entity.network = dataSource.network()
-
+  entity.network = CHAIN
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleSecondReweightActionCompleted(
-  event: SecondReweightActionCompletedEvent,
-): void {
-  let entity = new ANFISecondReweightActionCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
   entity.save()
 }

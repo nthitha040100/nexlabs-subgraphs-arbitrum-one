@@ -1,4 +1,3 @@
-import { dataSource } from "@graphprotocol/graph-ts"
 import {
   AskValuesCompleted as AskValuesCompletedEvent,
   FirstReweightActionCompleted as FirstReweightActionCompletedEvent,
@@ -6,68 +5,69 @@ import {
   SecondReweightActionCompleted as SecondReweightActionCompletedEvent,
 } from "../generated/IndexBalancerSenderCRYPTO5/IndexBalancerSenderCRYPTO5"
 import {
-  CRYPTO5AskValuesCompleted,
-  CRYPTO5FirstReweightActionCompleted,
+  CRYPTO5ReweightAction,
   CRYPTO5MessageSent,
-  CRYPTO5SecondReweightActionCompleted,
 } from "../generated/schema"
+import { ReweightActionType } from "./helper/enums"
+import { CHAIN } from "./helper/constant"
 
-export function handleAskValuesCompleted(event: AskValuesCompletedEvent): void {
-  let entity = new CRYPTO5AskValuesCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+export function handleAskValuesCompleted(
+  event: AskValuesCompletedEvent
+): void {
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new CRYPTO5ReweightAction(id)
 
-  entity.save()
+  action.type = ReweightActionType.ASK_VALUES_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleFirstReweightActionCompleted(
-  event: FirstReweightActionCompletedEvent,
+  event: FirstReweightActionCompletedEvent
 ): void {
-  let entity = new CRYPTO5FirstReweightActionCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new CRYPTO5ReweightAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = ReweightActionType.FIRST_REWEIGHT_ACTION_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
 
-  entity.save()
+  action.save()
+}
+
+export function handleSecondReweightActionCompleted(
+  event: SecondReweightActionCompletedEvent
+): void {
+  let id = event.transaction.hash.concatI32(event.logIndex.toI32())
+  let action = new CRYPTO5ReweightAction(id)
+
+  action.type = ReweightActionType.SECOND_REWEIGHT_ACTION_COMPLETED
+  action.network = CHAIN
+  action.time = event.params.time
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleMessageSent(event: MessageSentEvent): void {
   let entity = new CRYPTO5MessageSent(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.messageId = event.params.messageId
-  entity.network = dataSource.network()
-
+  entity.network = CHAIN
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleSecondReweightActionCompleted(
-  event: SecondReweightActionCompletedEvent,
-): void {
-  let entity = new CRYPTO5SecondReweightActionCompleted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.time = event.params.time
-  entity.network = dataSource.network()
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
   entity.save()
 }

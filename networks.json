@@ -1,51 +1,20 @@
 {
   "arbitrum-one": {
-    "IndexFactoryARBEI": {
-      "address": "0xC261547547fb4b108db504FE200e20Db7612D5E9",
-      "startBlock": 300634384
-    },
-    "IndexTokenARBEI": {
-      "address": "0x4386741db5Aadec9201c997b9fD197b598ef1323",
-      "startBlock": 300632315
-    },
-    "IndexTokenANFI": {
-      "address": "0x41Fecfb0E330E5FE13452B80049127991248345C"
-    },
-    "IndexFactoryANFI": {
-      "address": "0x6a41A7431556B5F14a3c0872175302B7A5B4D110"
-    },
-    "IndexCoreSenderANFI": {
-      "address": "0xA33Ec66fDD910418b5C85DC5cB1b2A00b9D8701B"
-    },
-    "IndexTokenCRYPTO5": {
-      "address": "0xdA184FC12cCe81dF499561E88f3d9a06cb229dfC"
-    },
-    "IndexFactoryCRYPTO5": {
-      "address": "0xA00be13EbfaCa5ADB3780096F88dEA42d6a021c8"
-    },
-    "IndexCoreSenderCRYPTO5": {
-      "address": "0xe7CDe099c0faFD2B9BbeB07FeD167737e8bDfd78"
-    },
-    "IndexTokenMAG7": {
-      "address": "0xF04D96e9cFD651a55D439415598568512a49B72d"
-    },
-    "IndexFactoryMAG7": {
-      "address": "0xa481B9357C150A206b74c815fF6bCEc3D0786Ce9"
-    },
-    "IndexProcessorMAG7": {
-      "address": "0x24D193bA32E51d5a88b63fa0a754d365EAbf8051"
-    },
     "IndexBalancerARBEI": {
-      "address": "0xb4bdDC1DC62128e28ed66Fcd5e606B9a05712F2E"
+      "address": "0xb4bdDC1DC62128e28ed66Fcd5e606B9a05712F2E",
+      "startBlock": 302257697
     },
     "IndexBalancerMAG7": {
-      "address": "0xFD05fd8aC336006ddb6201Bf3798A0fC10D15088"
+      "address": "0xFD05fd8aC336006ddb6201Bf3798A0fC10D15088",
+      "startBlock": 311814334
     },
     "IndexBalancerSenderCRYPTO5": {
-      "address": "0xaC00d47A66A7e37D7A2809CAba48CaC5ba95A30F"
+      "address": "0xaC00d47A66A7e37D7A2809CAba48CaC5ba95A30F",
+      "startBlock": 307653836
     },
     "IndexBalancerSenderANFI": {
-      "address": "0xcC7fA3Fc08f3b735f618744776C65A149E09a943"
+      "address": "0xcC7fA3Fc08f3b735f618744776C65A149E09a943",
+      "startBlock": 322148044
     }
   }
 }

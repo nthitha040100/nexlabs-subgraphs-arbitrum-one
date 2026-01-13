@@ -1,62 +1,67 @@
-import { dataSource } from "@graphprotocol/graph-ts"
+import { Bytes } from "@graphprotocol/graph-ts"
 import {
   CompleteRebalanceActions as CompleteRebalanceActionsEvent,
   FirstRebalanceAction as FirstRebalanceActionEvent,
   SecondRebalanceAction as SecondRebalanceActionEvent
 } from "../generated/IndexBalancerMAG7/IndexBalancerMAG7"
-import {
-  MAG7CompleteRebalanceActions,
-  MAG7FirstRebalanceAction,
-  MAG7SecondRebalanceAction
-} from "../generated/schema"
+import { MAG7RebalanceAction } from "../generated/schema"
+import { RebalanceActionType } from "./helper/enums"
+import { CHAIN } from "./helper/constant"
+
+function makeId(eventHash: Bytes, logIndex: i32): Bytes {
+  return eventHash.concatI32(logIndex)
+}
 
 export function handleCompleteRebalanceActions(
-  event: CompleteRebalanceActionsEvent,
+  event: CompleteRebalanceActionsEvent
 ): void {
-  let entity = new MAG7CompleteRebalanceActions(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.nonce = event.params.nonce
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+  let id = makeId(event.transaction.hash, event.logIndex.toI32())
+  let action = new MAG7RebalanceAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = RebalanceActionType.COMPLETE
+  action.network = CHAIN
+  action.nonce = event.params.nonce
+  action.time = event.params.time
 
-  entity.save()
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleFirstRebalanceAction(
-  event: FirstRebalanceActionEvent,
+  event: FirstRebalanceActionEvent
 ): void {
-  let entity = new MAG7FirstRebalanceAction(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.nonce = event.params.nonce
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+  let id = makeId(event.transaction.hash, event.logIndex.toI32())
+  let action = new MAG7RebalanceAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = RebalanceActionType.FIRST
+  action.network = CHAIN
+  action.nonce = event.params.nonce
+  action.time = event.params.time
 
-  entity.save()
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }
 
 export function handleSecondRebalanceAction(
-  event: SecondRebalanceActionEvent,
+  event: SecondRebalanceActionEvent
 ): void {
-  let entity = new MAG7SecondRebalanceAction(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.nonce = event.params.nonce
-  entity.time = event.params.time
-  entity.network = dataSource.network()
+  let id = makeId(event.transaction.hash, event.logIndex.toI32())
+  let action = new MAG7RebalanceAction(id)
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  action.type = RebalanceActionType.SECOND
+  action.network = CHAIN
+  action.nonce = event.params.nonce
+  action.time = event.params.time
 
-  entity.save()
+  action.blockNumber = event.block.number
+  action.blockTimestamp = event.block.timestamp
+  action.transactionHash = event.transaction.hash
+
+  action.save()
 }

@@ -1,118 +1,42 @@
-type ARBEIIssuanced @entity(immutable: true) {
+enum RebalanceActionType {
+  COMPLETE
+  FIRST
+  SECOND
+}
+
+enum ReweightActionType {
+  ASK_VALUES_COMPLETED
+  FIRST_REWEIGHT_ACTION_COMPLETED
+  SECOND_REWEIGHT_ACTION_COMPLETED
+}
+
+type ARBEIRebalanced @entity(immutable: true) {
   id: Bytes!
   network: String! # string
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! #uint256
   time: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
 
-type ARBEIRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! #uint256
-  time: BigInt! # uint256
+type MAG7RebalanceAction @entity(immutable: true) {
+  id: Bytes! @id
+  type: RebalanceActionType! @index
+  network: String! @index
+  nonce: BigInt! @index
+  time: BigInt! @index
   blockNumber: BigInt!
-  blockTimestamp: BigInt!
+  blockTimestamp: BigInt! @index
   transactionHash: Bytes!
 }
 
-type ARBEIApproval @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
+type CRYPTO5ReweightAction @entity(immutable: true) {
+  id: Bytes! @id
+  type: ReweightActionType! @index
+  network: String! @index
+  time: BigInt! @index
   blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ARBEITransfer @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFIApproval @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFITransfer @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFIRequestIssuance @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFIRequestRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFIIssuanced @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
+  blockTimestamp: BigInt! @index
   transactionHash: Bytes!
 }
 
@@ -125,87 +49,13 @@ type ANFIMessageSent @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type ANFIRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
+type ANFIReweightAction @entity(immutable: true) {
+  id: Bytes! @id
+  type: ReweightActionType! @index
+  network: String! @index
+  time: BigInt! @index
   blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5Approval @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5Transfer @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5RequestIssuance @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5RequestRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5Issuanced @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
+  blockTimestamp: BigInt! @index
   transactionHash: Bytes!
 }
 
@@ -213,250 +63,6 @@ type CRYPTO5MessageSent @entity(immutable: true) {
   id: Bytes!
   network: String! # string
   messageId: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5Redemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  messageId: Bytes! # bytes32
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7Approval @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7Transfer @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7RequestCancelIssuance @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7RequestCancelRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7RequestIssuance @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7RequestRedemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7IssuanceCancelled @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7Issuanced @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  inputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7Redemption @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  price: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7RedemptionCancelled @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  user: Bytes! # address
-  outputToken: Bytes! # address
-  inputAmount: BigInt! # uint256
-  outputAmount: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ARBEIRebalanced @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7CompleteRebalanceActions @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7FirstRebalanceAction @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type MAG7SecondRebalanceAction @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  nonce: BigInt! # uint256
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5AskValuesCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5FirstReweightActionCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CRYPTO5SecondReweightActionCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-type ANFIAskValuesCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFIFirstReweightActionCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ANFISecondReweightActionCompleted @entity(immutable: true) {
-  id: Bytes!
-  network: String! # string
-  time: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
